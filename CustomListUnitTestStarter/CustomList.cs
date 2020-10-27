@@ -8,14 +8,14 @@ namespace CustomListUnitTestStarter
 {
     public class CustomList<T>
     {
-        private int count = 0;
-        public int Count
+        private int counter = 0;
+        public int Counter
         {
-            get => count;
-            set
-            {
-                count = value;
-            }
+            get => counter;
+            //set
+            //{
+            //    count = value;
+            //}
         }
         private int capacity = 4;
         public int Capacity
@@ -23,19 +23,80 @@ namespace CustomListUnitTestStarter
             get => capacity;
             set
             {
-                if (Count > capacity)
+                if ((Counter + 1) > capacity)
                 {
                     capacity = capacity * 2;
                 }
             }
         }
+       // public CustomList()
 
-        // member varialbe
-
+        public int index = 0;
         T[] items;
+
+        //public static T[] Add(T item)
+        //    {
+        //    if (items.counter == 0)
+        //    {
+
+        //    }
+
         public void Add(T item)
         {
+            
+            CustomListSize();
+
+            if (counter == 0)
+            {
+                items[index] = item;
+                counter = counter + 1;
+            }
+            else
+            {
+                items[index + 1] = item;
+                counter = counter + 1;
+                index = index + 1;
+            }
+        }
+        public bool CheckType(T item)
+        {
+            //item.GetType();
+            //items.GetType();
+            if (item.GetType() == items.GetType())
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
 
         }
+
+        public void CustomListSize()
+        {
+            if (counter + 1 > capacity)
+            {
+                capacity = capacity * 2;
+
+                Array.Resize<T>(ref items, capacity);
+            }
+            
+        }
+
+        public void removeItem(items, T item)
+        {
+            foreach (var check in items)
+            {
+                if (check == item)
+                {
+
+                }
+            }
+        }
+
+
+
     }
 }
+
