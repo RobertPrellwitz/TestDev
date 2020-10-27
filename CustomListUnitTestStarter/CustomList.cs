@@ -30,30 +30,56 @@ namespace CustomListUnitTestStarter
                 }
             }
         }
-       // public CustomList()
+        public T this[int i]
+        {
+            if (int i <0 || int > capacity )
+            {
+                Console.WriteLine("this is an invalid selection;"  );
+            else{
+                 get { return items[i]; }
+                 set { items[i] = value; }
+                 }   
+            }
+        }
 
         public int index = 0;
-        
+       
         T[] items;
-
+        public CustomList()
+        {
+            items = new T[capacity];
+        }
+        //     public T this[int i]
+        //{
+        //    if (int i <0 || int > capacity )
+        //    {
+        //        Console.WriteLine("this is an invalid selection;"  );
+        //    else{
+        //    get { return items[i]; }
+        //    set { items[i] = value; }
+        //    }   
+        //    }
+        //}
+    
         public void Add(T item)
         {
-            CheckType(item);
+            check = true;
+            // CheckType(item);
             if (check)
             {
-                    CustomListSize();
+                CustomListSize();
 
-                    if (counter == 0)
-                    {
-                        items[index] = item;
-                        counter = counter + 1;
-                    }
-                    else
-                    {
-                        items[index + 1] = item;
-                        counter = counter + 1;
-                        index = index + 1;
-                    }
+                if (counter == 0)
+                {
+                    items[index] = item;
+                    counter = counter + 1;
+                }
+                else
+                {
+                    items[index + 1] = item;
+                    counter = counter + 1;
+                    index = index + 1;
+                }
             }
             else
             {
@@ -61,14 +87,15 @@ namespace CustomListUnitTestStarter
             }
         }
         public bool CheckType(T item)
-        {            check = true;
+        {
+            check = true;
             //item.GetType();
             //items.GetType();
-            if (item.GetType() == .GetType())
+            if (item.GetType() == items.GetType())
             {
                 return check;
             }
-            else 
+            else
             {
                 check = false;
                 return check;
@@ -81,10 +108,15 @@ namespace CustomListUnitTestStarter
             if (counter + 1 > capacity)
             {
                 capacity = capacity * 2;
-
-                Array.Resize<T>(ref items, capacity);
+                T[] itemTemp = new T[capacity];
+                for (int i = 0; i < items.Length; i++)
+                {
+                    itemTemp[i] = items[i];
+                }
+                items = itemTemp;
+               //Array.Resize<T>(ref items, capacity);
             }
-            
+
         }
         public void Indexer()
         {
@@ -101,9 +133,11 @@ namespace CustomListUnitTestStarter
         //        }
         //    }
         //}
-
-
-
     }
+
+
+
+
+    
 }
 
