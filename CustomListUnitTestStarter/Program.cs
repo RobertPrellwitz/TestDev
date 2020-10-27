@@ -10,16 +10,34 @@ namespace CustomListUnitTestStarter
     {
         static void Main(string[] args)
         {
-            public CustomList<int> numbers = new CustomList<int>();
+         CustomList<int> numbers = new CustomList<int>();
 
             numbers.Add(4);
             numbers.Add(15);
+            numbers.Add(20);
+            numbers.Add(25);
+            numbers.Add(25);
+            numbers.Add(25);
+            numbers.Add(30);
 
-            Console.WriteLine($"your list contains ");
+            Console.Clear();
+            for (int i = 0; i <= numbers.index; i++)
+            {
+                Console.WriteLine($" yourlist contains {numbers[i]}");
+               
+            }
+        Console.WriteLine();
 
-            
+            numbers.removeItem(25);
 
+            for (int i = 0; i < numbers.index; i++)
+            {
+                Console.WriteLine($" yourlist contains {numbers[i]}");
 
+            }
+
+            Console.ReadLine();
         }
+        
     }
 }

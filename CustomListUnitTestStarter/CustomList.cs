@@ -31,15 +31,10 @@ namespace CustomListUnitTestStarter
             }
         }
         public T this[int i]
-        {
-            if (int i <0 || int > capacity )
-            {
-                Console.WriteLine("this is an invalid selection;"  );
-            else{
+        {  
+    
                  get { return items[i]; }
                  set { items[i] = value; }
-                 }   
-            }
         }
 
         public int index = 0;
@@ -49,18 +44,7 @@ namespace CustomListUnitTestStarter
         {
             items = new T[capacity];
         }
-        //     public T this[int i]
-        //{
-        //    if (int i <0 || int > capacity )
-        //    {
-        //        Console.WriteLine("this is an invalid selection;"  );
-        //    else{
-        //    get { return items[i]; }
-        //    set { items[i] = value; }
-        //    }   
-        //    }
-        //}
-    
+       
         public void Add(T item)
         {
             check = true;
@@ -89,8 +73,6 @@ namespace CustomListUnitTestStarter
         public bool CheckType(T item)
         {
             check = true;
-            //item.GetType();
-            //items.GetType();
             if (item.GetType() == items.GetType())
             {
                 return check;
@@ -114,30 +96,36 @@ namespace CustomListUnitTestStarter
                     itemTemp[i] = items[i];
                 }
                 items = itemTemp;
-               //Array.Resize<T>(ref items, capacity);
+              
             }
 
         }
-        public void Indexer()
+
+        public void removeItem(T item)
         {
+            //var itemsList = items.ToList();
+            //itemsList.Remove(item);
 
+            for (int i = 0; i < counter; i++)
+            {
+                if (EqualityComparer<T>.Default.Equals(item, items[i]))
+                {
+                    
+                    for (int k = i; k < counter; k++)
+                    {
+                        items[k] = items[k + 1];
+                    }
+                    break;
+                }
+
+            }
         }
-
-        //public void removeItem(items, T item)
-        //{
-        //    foreach (var check in items)
-        //    {
-        //        if (check == item)
-        //        {
-
-        //        }
-        //    }
-        //}
+        
     }
 
 
 
 
-    
+
 }
 

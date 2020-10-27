@@ -35,7 +35,7 @@ namespace CustomListTests
 
             // Act
             testList.Add(item);
-            actual = testList.Count; // error expected until "Count" is added to class
+            actual = testList.Counter; // error expected until "Count" is added to class
 
             // Assert
             Assert.AreEqual(expected, actual);
@@ -53,7 +53,7 @@ namespace CustomListTests
             testList.Add(item);
             testList.Add(item);
 
-            actual = testList.Count;
+            actual = testList.Counter;
 
 
 
@@ -98,7 +98,7 @@ namespace CustomListTests
             testList.Add(25);
             testList.Add(30);
 
-            actual = testList.capacity;
+            actual = testList.Capacity;
 
 
 
@@ -174,9 +174,9 @@ namespace CustomListTests
             testList.Add(25);
             testList.Add(30);
 
-            testList.Remove(item);
+            testList.removeItem(item);
 
-            actual = testList.Count;
+            actual = testList.Counter;
 
 
 
@@ -189,7 +189,7 @@ namespace CustomListTests
             CustomList<int> testList = new CustomList<int>();
             int item = 15;
 
-            CustomList<int> expected = new CustomList<int>() { 10, 15, 25, 15, 30 };
+            CustomList<int> expected = new CustomList<int>();
             CustomList<int> actual;
 
             testList.Add(10);
@@ -199,7 +199,7 @@ namespace CustomListTests
             testList.Add(15);
             testList.Add(30);
 
-            testList.Remove(item);
+            testList.removeItem(item);
 
             actual = testList;
 
