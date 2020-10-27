@@ -8,6 +8,7 @@ namespace CustomListUnitTestStarter
 {
     public class CustomList<T>
     {
+        bool check;
         private int counter = 0;
         public int Counter
         {
@@ -43,32 +44,40 @@ namespace CustomListUnitTestStarter
 
         public void Add(T item)
         {
-            
-            CustomListSize();
-
-            if (counter == 0)
+            if (check)
             {
-                items[index] = item;
-                counter = counter + 1;
+                    CustomListSize();
+
+                    if (counter == 0)
+                    {
+                        items[index] = item;
+                        counter = counter + 1;
+                    }
+                    else
+                    {
+                        items[index + 1] = item;
+                        counter = counter + 1;
+                        index = index + 1;
+                    }
             }
             else
             {
-                items[index + 1] = item;
-                counter = counter + 1;
-                index = index + 1;
+                Console.WriteLine("That is not a valid data type");
             }
         }
         public bool CheckType(T item)
         {
+            check = true;
             //item.GetType();
             //items.GetType();
             if (item.GetType() == items.GetType())
             {
-                return true;
+                return check;
             }
             else 
             {
-                return false;
+                check = false;
+                return check;
             }
 
         }
