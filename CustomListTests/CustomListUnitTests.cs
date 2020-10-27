@@ -208,6 +208,34 @@ namespace CustomListTests
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void AddTwoLists()
+        {
+            CustomList<int> actual;
+            CustomList<int> testList = new CustomList<int>();
+            testList.Add(10);
+            testList.Add(15);
+            testList.Add(20);
+
+            CustomList<int> testList2 = new CustomList<int>();
+            testList.Add(15);
+            testList.Add(30);
+            testList.Add(45);
+
+            CustomList<int> expected = new CustomList<int>();
+            testList.Add(10);
+            testList.Add(15);
+            testList.Add(20);
+            testList.Add(15);
+            testList.Add(30);
+            testList.Add(45);
+
+            actual = testList + testList2;
+
+            Assert.AreEqual(expected, actual);
+
+
+        }
 
         //[TestMethod]
         //public void RemoveItemFromList_RemoveCorrectItem()
