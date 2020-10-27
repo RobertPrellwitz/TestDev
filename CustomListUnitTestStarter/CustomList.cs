@@ -33,17 +33,12 @@ namespace CustomListUnitTestStarter
        // public CustomList()
 
         public int index = 0;
+        
         T[] items;
-
-        //public static T[] Add(T item)
-        //    {
-        //    if (items.counter == 0)
-        //    {
-
-        //    }
 
         public void Add(T item)
         {
+            CheckType(item);
             if (check)
             {
                     CustomListSize();
@@ -66,11 +61,10 @@ namespace CustomListUnitTestStarter
             }
         }
         public bool CheckType(T item)
-        {
-            check = true;
+        {            check = true;
             //item.GetType();
             //items.GetType();
-            if (item.GetType() == items.GetType())
+            if (item.GetType() == .GetType())
             {
                 return check;
             }
@@ -92,17 +86,21 @@ namespace CustomListUnitTestStarter
             }
             
         }
-
-        public void removeItem(items, T item)
+        public void Indexer()
         {
-            foreach (var check in items)
-            {
-                if (check == item)
-                {
 
-                }
-            }
         }
+
+        //public void removeItem(items, T item)
+        //{
+        //    foreach (var check in items)
+        //    {
+        //        if (check == item)
+        //        {
+
+        //        }
+        //    }
+        //}
 
 
 
