@@ -32,9 +32,24 @@ namespace CustomListUnitTestStarter
         }
         public T this[int i]
         {  
-    
-                 get { return items[i]; }
-                 set { items[i] = value; }
+                get { 
+                    if(i<0 || i> capacity)
+                {
+                    return items[i];
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                }
+                   
+                 set { 
+                    if(i<0 || i > capacity)
+                {
+                    items[i] = value;
+                }
+                throw new ArgumentOutOfRangeException();
+                }
         }
 
         public int index = 0;
@@ -115,6 +130,7 @@ namespace CustomListUnitTestStarter
                     {
                         items[k] = items[k + 1];
                     }
+                    counter = counter - 1;
                     break;
                 }
 
