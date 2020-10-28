@@ -34,7 +34,7 @@ namespace CustomListUnitTestStarter
         {
             get
             {
-                if (i >= 0 || i < capacity)
+                if (i >= 0 && i <= capacity)
                 {
                     return items[i];
                 }
@@ -46,39 +46,42 @@ namespace CustomListUnitTestStarter
 
             set
             {
-                if (i >= 0 || i < capacity)
+                if (i >= 0 && i <= capacity)
                 {
                     items[i] = value;
                 }
-                throw new ArgumentOutOfRangeException();
+                else
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
             }
         }
 
         public int index = 0;
 
         T[] items;
-      
+
         public CustomList()
         {
             items = new T[capacity];
-          
+
         }
 
         public void Add(T item)
-        {  
-                CustomListSize();
+        {
+            CustomListSize();
 
-                if (counter == 0)
-                {
-                    items[index] = item;
-                    counter = counter + 1;
-                }
-                else
-                {
-                    items[index + 1] = item;
-                    counter = counter + 1;
-                    index = index + 1;
-                }
+            if (counter == 0)
+            {
+                items[index] = item;
+                counter = counter + 1;
+            }
+            else
+            {
+                items[index + 1] = item;
+                counter = counter + 1;
+                index = index + 1;
+            }
         }
         public bool CheckType(T item)
         {
@@ -113,7 +116,7 @@ namespace CustomListUnitTestStarter
 
         public void removeItem(T item)
         {
-            
+
             for (int i = 0; i < counter; i++)
             {
                 if (EqualityComparer<T>.Default.Equals(item, items[i]))
@@ -130,9 +133,9 @@ namespace CustomListUnitTestStarter
             }
         }
 
-        public void AddTwoLists(CustomList<T> list1, CustomList<T> list2)
+        public CustomList<T> AddTwoLists(CustomList<T> list1, CustomList<T> list2)
         {
-           CustomList<T> newList = new CustomList<T>();
+            CustomList<T> newList = new CustomList<T>();
             for (int i = 0; i < list1.counter; i++)
             {
                 newList.Add(list1[i]);
@@ -141,10 +144,10 @@ namespace CustomListUnitTestStarter
             {
                 newList.Add(list2[i]);
             }
-            //return newList;
+            return newList;
         }
 
-        public void ZipTwoLists(CustomList<T> list1, CustomList<T> list2)
+        public CustomList<T> ZipTwoLists(CustomList<T> list1, CustomList<T> list2)
         {
             int tempCount;
 
@@ -163,12 +166,79 @@ namespace CustomListUnitTestStarter
                 newList.Add(list1[i]);
                 newList.Add(list2[i]);
             }
-            
+            return newList;
         }
+        public static CustomList<T> operator +(CustomList<T> list1, CustomList<T> list2)
+        {
+            CustomList<T> newList = new CustomList<T>();
+            for (int i = 0; i < list1.counter; i++)
+            {
+                newList.Add(list1[i]);
+            }
+            for (int i = 0; i < list2.counter; i++)
+            {
+                newList.Add(list2[i]);
+            }
+            return newList;
+        }
+        public static CustomList<T> operator -(CustomList<T> list1, CustomList<T> list2)
+        {
 
+            for (int i = 0; i < list1.counter; i++)
+            {
+                for (int j = 0; j < list2.counter; j++)
+                {
+                    if (EqualityComparer<T>.Default.Equals(list1[i], list2[j]))
+                    {
+                        for (int k = i; k < list1.counter; k++)
+                        {
+                            list1[k] = list1[k + 1];
+                        }
+                        i = i - 1;
+                        list1.counter = list1.counter - 1;
 
+                        for (int l = j; l < list2.counter; l++)
+                        {
+                            list2[l] = list2[l + 1];
+                        }
+                        j = j - 1;
+                        list2.counter = list2.counter - 1;
+                    }
+                }
+            }
+            return list1;
+        }
+            
+        
+        public CustomList<T> SubLists(CustomList<T> list1, CustomList<T> list2)
+        {
+            //CustomList<T> newList = new CustomList<T>();
+            for (int i = 0; i < list1.counter; i++)
+            {
+                for (int j = 0; j < list2.counter; j++)
+                {
+                    if (EqualityComparer<T>.Default.Equals(list1[i], list2[j]))
+                    {
+                        for (int k = i; k < list1.counter; k++)
+                        {
+                            list1[k] = list1[k + 1];
+                        }
+                        i = i - 1;
+                        list1.counter = list1.counter - 1;
+
+                        for (int l = j; l < list2.counter; l++)
+                        {
+                            list2[l] = list2[l + 1];
+                        }
+                        j = j - 1;
+                        list2.counter = list2.counter - 1;
+                    }
+                }
+            }
+            return list1;
+
+        }
     }
-
 
 }
 

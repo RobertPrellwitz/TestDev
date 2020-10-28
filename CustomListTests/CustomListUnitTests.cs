@@ -237,6 +237,37 @@ namespace CustomListTests
 
         }
 
+        [TestMethod]
+        public void ZipTwoLists()
+        {
+            CustomList<int> actual;
+            CustomList<int> testList = new CustomList<int>();
+            testList.Add(1);
+            testList.Add(3);
+            testList.Add(5);
+            testList.Add(7);
+
+            CustomList<int> testList2 = new CustomList<int>();
+            testList.Add(2);
+            testList.Add(4);
+            testList.Add(6);
+
+            CustomList<int> expected = new CustomList<int>();
+            testList.Add(1);
+            testList.Add(2);
+            testList.Add(3);
+            testList.Add(4);
+            testList.Add(5);
+            testList.Add(6);
+            testList.Add(7);
+
+            actual = testList + testList2;
+
+            Assert.AreEqual(expected, actual);
+
+
+        }
+
         //[TestMethod]
         //public void RemoveItemFromList_RemoveCorrectItem()
         //{
