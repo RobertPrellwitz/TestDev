@@ -178,19 +178,19 @@ namespace CustomListTests
 
             actual = testList.Counter;
 
-
-
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void RemoveItemFromList_RemoveCorrectItem()
         {
-            CustomList<int> testList = new CustomList<int>();
+            string actualString;
+            string expectedString;
+            
             int item = 15;
-
+            CustomList<int> testList = new CustomList<int>();
             CustomList<int> expected = new CustomList<int>();
-            CustomList<int> actual;
+            CustomList<int> actual = new CustomList<int>();
 
             testList.Add(10);
             testList.Add(item);
@@ -199,17 +199,31 @@ namespace CustomListTests
             testList.Add(15);
             testList.Add(30);
 
+            expected.Add(10);
+            expected.Add(20);
+            expected.Add(25);
+            expected.Add(15);
+            expected.Add(30);
+
             testList.removeItem(item);
 
             actual = testList;
 
+            actualString = actual.ConvertToString(actual);
+            expectedString = expected.ConvertToString(expected);
+
+            Assert.AreEqual(expectedString, actualString);
 
 
-            Assert.AreEqual(expected, actual);
+
+            
         }
         [TestMethod]
         public void RemoveItemFromEmpty_RemoveCorrectItem()
         {
+
+            string actualString;
+            string expectedString;
             CustomList<int> testList = new CustomList<int>();
             int item = 15;
 
@@ -226,13 +240,18 @@ namespace CustomListTests
             actual = testList;
 
 
+            actualString = actual.ConvertToString(actual);
+            expectedString = expected.ConvertToString(expected);
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expectedString, actualString);
+
         }
 
         [TestMethod]
         public void AddTwoLists()
         {
+            string actualString;
+            string expectedstring;
             CustomList<int> actual;
             CustomList<int> testList = new CustomList<int>();
             testList.Add(10);
@@ -240,28 +259,35 @@ namespace CustomListTests
             testList.Add(20);
 
             CustomList<int> testList2 = new CustomList<int>();
-            testList.Add(15);
-            testList.Add(30);
-            testList.Add(45);
+            testList2.Add(15);
+            testList2.Add(30);
+            testList2.Add(45);
 
             CustomList<int> expected = new CustomList<int>();
-            testList.Add(10);
-            testList.Add(15);
-            testList.Add(20);
-            testList.Add(15);
-            testList.Add(30);
-            testList.Add(45);
+            expected.Add(10);
+            expected.Add(15);
+            expected.Add(20);
+            expected.Add(15);
+            expected.Add(30);
+            expected.Add(45);
 
             actual = testList + testList2;
 
-            Assert.AreEqual(expected, actual);
+            actualString = actual.ConvertToString(actual);
+            expectedstring = expected.ConvertToString(expected);
 
+            Assert.AreEqual(expectedstring, actualString);
+            
 
         }
 
         [TestMethod]
         public void ZipTwoLists()
         {
+            string actualString;
+            string expectedString;
+            CustomList<int> tempList =new CustomList<int>();
+            
             CustomList<int> actual;
             CustomList<int> testList = new CustomList<int>();
             testList.Add(1);
@@ -270,22 +296,25 @@ namespace CustomListTests
             testList.Add(7);
 
             CustomList<int> testList2 = new CustomList<int>();
-            testList.Add(2);
-            testList.Add(4);
-            testList.Add(6);
+            testList2.Add(2);
+            testList2.Add(4);
+            testList2.Add(6);
 
             CustomList<int> expected = new CustomList<int>();
-            testList.Add(1);
-            testList.Add(2);
-            testList.Add(3);
-            testList.Add(4);
-            testList.Add(5);
-            testList.Add(6);
-            testList.Add(7);
+            expected.Add(1);
+            expected.Add(2);
+            expected.Add(3);
+            expected.Add(4);
+            expected.Add(5);
+            expected.Add(6);
+            expected.Add(7);
 
-            actual = testList + testList2;
+            actual= tempList.ZipTwoLists(testList, testList2);
 
-            Assert.AreEqual(expected, actual);
+            actualString = actual.ConvertToString(actual);
+            expectedString = expected.ConvertToString(expected);
+
+            Assert.AreEqual(expectedString, actualString);
 
 
         }
@@ -310,8 +339,6 @@ namespace CustomListTests
             actual = testList - testList2;
 
             Assert.AreEqual(expected, actual);
-
-
         }
 
         [TestMethod]
@@ -328,40 +355,10 @@ namespace CustomListTests
             string expected = "10, 15, 20, 30, 45";
             string actual = testList.ConvertToString(testList);
 
-           
-
             Assert.AreEqual(expected, actual);
 
 
         }
-        //[TestMethod]
-        //public void RemoveItemFromList_RemoveCorrectItem()
-        //{
-        //    CustomList<int> testList = new CustomList<int>();
-        //    int item = 15;
 
-        //    int expected = 4;
-        //    int actual;
-
-        //    testList.Add(10);
-        //    testList.Add(item);
-        //    testList.Add(20);
-        //    testList.Add(25);
-        //    testList.Add(30);
-        //    testList.Remove[4];
-
-        //    actual = testList.count;
-
-
-
-        //    Assert.AreEqual(expected, actual);
-        //}
-
-
-        // what if i .Add to a list that has a couple things in it already (position of item)?
-        // what if i .Add to a list that has a couple things in it already (value of Count)?
-        // how does the Capacity change as you add things? (starts at 4, and doubles)
-
-        // REMOVE TESTS:
     }
 }

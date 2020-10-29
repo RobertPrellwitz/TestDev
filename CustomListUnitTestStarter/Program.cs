@@ -11,36 +11,15 @@ namespace CustomListUnitTestStarter
     {
         static void Main(string[] args)
         {
-         CustomList<int> numbers = new CustomList<int>();
-
-            numbers.Add(4);
-            numbers.Add(15);
-            numbers.Add(20);
-            numbers.Add(25);
-            numbers.Add(25);
-            numbers.Add(25);
-            numbers.Add(30);
-
-            Console.Clear();
-            for (int i = 0; i <= numbers.index; i++)
-            {
-                Console.WriteLine($" yourlist contains {numbers[i]}");
-               
-            }
-        Console.WriteLine();
-
-            numbers.removeItem(25);
-
-            for (int i = 0; i < numbers.index; i++)
-            {
-                Console.WriteLine($" yourlist contains {numbers[i]}");
-
-            }
+        
+        
             CustomList<int> tempList = new CustomList<int>();
             CustomList<int> testList = new CustomList<int>();
             testList.Add(10);
             testList.Add(15);
             testList.Add(20);
+            testList.Add(25);
+            testList.Add(30);
 
             Console.WriteLine("Test List 1");
             for (int i = 0; i <= testList.index; i++)
@@ -53,6 +32,8 @@ namespace CustomListUnitTestStarter
             testList2.Add(15);
             testList2.Add(30);
             testList2.Add(45);
+            testList2.Add(45);
+            testList2.Add(50);
 
             Console.WriteLine("Test List 2");
             for (int i = 0; i <= testList2.index; i++)
@@ -60,6 +41,8 @@ namespace CustomListUnitTestStarter
                 Console.WriteLine($" yourlist contains {testList2[i]}");
 
             }
+
+
 
             CustomList<int> combinedList = new CustomList<int>();
 
@@ -70,6 +53,32 @@ namespace CustomListUnitTestStarter
                 Console.WriteLine($" your new list contains {combinedList[i]}");
 
             }
+
+            Console.WriteLine("\n\n test lists for subtraction method");
+            Console.WriteLine("Test List 1");
+            for (int i = 0; i <= testList.index; i++)
+            {
+                Console.WriteLine($" yourlist contains {testList[i]}");
+
+            }
+            Console.WriteLine("Test List 2");
+            for (int i = 0; i <= testList2.index; i++)
+            {
+                Console.WriteLine($" yourlist contains {testList2[i]}");
+
+            }
+
+            CustomList<int> subList = new CustomList<int>();
+            subList = tempList.SubLists(testList, testList2);
+            Console.WriteLine("\n\nNew List with like items removed from List 1 \n"  );
+            foreach (var item in subList)
+            {
+                Console.WriteLine($"Number {item}");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine();
+
 
             CustomList<int> testList3 = new CustomList<int>();
             testList3.Add(1);
@@ -109,40 +118,14 @@ namespace CustomListUnitTestStarter
                 Console.WriteLine($" yourlist contains {zipList[i]}");
 
             }
-            
-
-            CustomList<int> addList = new CustomList<int>();
-            addList = testList3 + testList4;
-
-            Console.WriteLine("Add Lists List");
-            for (int i = 0; i <= addList.index; i++)
+            Console.WriteLine("Zip list from For Each Loop!" );
+            foreach (var item in zipList)
             {
-                Console.WriteLine($" yourlist contains {addList[i]}");
-
+                Console.WriteLine($" number {item}");
             }
+            Console.ReadLine();
 
-
-            CustomList<int> subList = new CustomList<int>();
-            subList = testList - testList2;
-            //subList = tempList.SubLists(testList7, testList8);
-
-            Console.WriteLine("Sub Lists List");
-            for (int i = 0; i <= subList.index; i++)
-            {
-                Console.WriteLine($" yourlist contains {subList[i]}");
-
-            }
-            string newString;
-            newString = tempList.ConvertToString(numbers);
-            
-            Console.ReadLine(); Console.ReadLine();
         }
-
-
-        
-       
-
-
 
     }
 }

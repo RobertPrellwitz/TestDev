@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -36,7 +37,7 @@ namespace CustomListUnitTestStarter
         {
             get
             {
-                if (i > 0 && i <= counter)
+                if (i >= 0 && i <= counter)
                 {
                     return items[i];
                 }
@@ -48,7 +49,7 @@ namespace CustomListUnitTestStarter
 
             set
             {
-                if (i > 0 && i <= counter)
+                if (i >= 0 && i <= counter)
                 {
                     items[i] = value;
                 }
@@ -131,10 +132,17 @@ namespace CustomListUnitTestStarter
         // Removes and Item from the List
         public void removeItem(T item)
         {
+            switch (Counter)
+            {
 
+            case  0:
+                    Console.WriteLine("There are no items to remove !");
+                    break;
+
+            default:
             for (int i = 0; i < counter; i++)
             {
-                if (EqualityComparer<T>.Default.Equals(item, items[i]))
+                if (item.Equals(items[i]))
                 {
 
                     for (int k = i; k < counter; k++)
@@ -145,6 +153,8 @@ namespace CustomListUnitTestStarter
                     break;
                 }
 
+            }
+                    break;
             }
         }
 
@@ -180,8 +190,14 @@ namespace CustomListUnitTestStarter
             CustomList<T> newList = new CustomList<T>();
             for (int i = 0; i < tempCount; i++)
             {
-                newList.Add(list1[i]);
-                newList.Add(list2[i]);
+                if(i< list1.counter)
+                {
+                    newList.Add(list1[i]);
+                }
+                if (i < list2.counter)
+                {
+                    newList.Add(list2[i]);
+                }
             }
             return newList;
         }
@@ -262,14 +278,23 @@ namespace CustomListUnitTestStarter
         public string ConvertToString(CustomList<T> list)
         {
             string temp = "";
-            for (int i = 0; i < list.Counter-1; i++)
+
+            if (Counter == 0)
             {
-                temp += list[i].ToString();
-                temp += ", ";
+                return temp;
             }
-            temp += list[list.counter-1].ToString();
-            Console.WriteLine(temp);
-            return temp;
+            else
+            {
+                
+                for (int i = 0; i < list.Counter - 1; i++)
+                {
+                    temp += list[i].ToString();
+                    temp += ", ";
+                }
+                temp += list[list.counter - 1].ToString();
+                Console.WriteLine(temp);
+                return temp;
+            }
         }
     }
 
