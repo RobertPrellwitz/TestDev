@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomListUnitTestStarter
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable
     {// constructor
 
         // Read Only Counter
@@ -35,7 +36,7 @@ namespace CustomListUnitTestStarter
         {
             get
             {
-                if (i >= 0 && i <= capacity)
+                if (i > 0 && i <= counter)
                 {
                     return items[i];
                 }
@@ -47,7 +48,7 @@ namespace CustomListUnitTestStarter
 
             set
             {
-                if (i >= 0 && i <= capacity)
+                if (i > 0 && i <= counter)
                 {
                     items[i] = value;
                 }
@@ -69,6 +70,15 @@ namespace CustomListUnitTestStarter
         }
         // Methods
 
+       
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < Counter; i++)
+            {
+                yield return items[i];
+            }
+        }
+        
         // Adds a Specific Item to the List
         public void Add(T item)
         {
