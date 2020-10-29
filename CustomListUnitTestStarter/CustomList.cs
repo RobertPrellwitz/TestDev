@@ -238,6 +238,19 @@ namespace CustomListUnitTestStarter
             return list1;
 
         }
+
+        public string ConvertToString(CustomList<T> list)
+        {
+            string temp = "";
+            for (int i = 0; i < list.Counter-2; i++)
+            {
+                temp += list[i].ToString();
+                temp += ", ";
+            }
+            temp += list[list.counter-1].ToString();
+            Console.WriteLine(temp);
+            return temp;
+        }
     }
 
 }

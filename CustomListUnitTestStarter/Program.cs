@@ -150,6 +150,9 @@ namespace CustomListUnitTestStarter
                 Console.WriteLine($" yourlist contains {subList[i]}");
 
             }
+            string newString;
+            newString = tempList.ConvertToString(numbers);
+            
             Console.ReadLine(); Console.ReadLine();
         }
 
