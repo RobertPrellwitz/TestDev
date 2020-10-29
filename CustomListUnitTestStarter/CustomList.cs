@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 namespace CustomListUnitTestStarter
 {
     public class CustomList<T>
-    {
+    {// constructor
+
+        // Read Only Counter
         bool check;
         private int counter = 0;
         public int Counter
         {
             get => counter;
-            //set
-            //{
-            //    count = value;
-            //}
+            
         }
+        // Initial Capacity and Controls
         private int capacity = 4;
         public int Capacity
         {
@@ -30,6 +30,7 @@ namespace CustomListUnitTestStarter
                 }
             }
         }
+        // Indexer
         public T this[int i]
         {
             get
@@ -66,7 +67,9 @@ namespace CustomListUnitTestStarter
             items = new T[capacity];
 
         }
+        // Methods
 
+        // Adds a Specific Item to the List
         public void Add(T item)
         {
             CustomListSize();
@@ -98,6 +101,7 @@ namespace CustomListUnitTestStarter
 
         }
 
+        // Inctreass the Capacity of the List
         public void CustomListSize()
         {
             if (counter + 1 > capacity)
@@ -114,6 +118,7 @@ namespace CustomListUnitTestStarter
 
         }
 
+        // Removes and Item from the List
         public void removeItem(T item)
         {
 
@@ -133,6 +138,7 @@ namespace CustomListUnitTestStarter
             }
         }
 
+        // Combines Two Lists
         public CustomList<T> AddTwoLists(CustomList<T> list1, CustomList<T> list2)
         {
             CustomList<T> newList = new CustomList<T>();
@@ -147,6 +153,7 @@ namespace CustomListUnitTestStarter
             return newList;
         }
 
+        // Zips Two lists (alternating items to the new list)
         public CustomList<T> ZipTwoLists(CustomList<T> list1, CustomList<T> list2)
         {
             int tempCount;
@@ -168,6 +175,8 @@ namespace CustomListUnitTestStarter
             }
             return newList;
         }
+
+        // + Operator Overload that combines two lists
         public static CustomList<T> operator +(CustomList<T> list1, CustomList<T> list2)
         {
             CustomList<T> newList = new CustomList<T>();
@@ -181,6 +190,7 @@ namespace CustomListUnitTestStarter
             }
             return newList;
         }
+         // - operator Overload that removes like items from 2 lists
         public static CustomList<T> operator -(CustomList<T> list1, CustomList<T> list2)
         {
 
@@ -209,7 +219,7 @@ namespace CustomListUnitTestStarter
             return list1;
         }
             
-        
+        // Method to remove like items from two lists
         public CustomList<T> SubLists(CustomList<T> list1, CustomList<T> list2)
         {
             //CustomList<T> newList = new CustomList<T>();
@@ -238,7 +248,7 @@ namespace CustomListUnitTestStarter
             return list1;
 
         }
-
+        // Takes a Custom list and converst the contents to a string
         public string ConvertToString(CustomList<T> list)
         {
             string temp = "";

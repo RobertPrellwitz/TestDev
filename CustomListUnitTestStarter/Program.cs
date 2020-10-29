@@ -111,17 +111,8 @@ namespace CustomListUnitTestStarter
             }
             
 
-            CustomList<int> testList5 = new CustomList<int>();
-            testList5.Add(10);
-            testList5.Add(15);
-            testList5.Add(20);
-            CustomList<int> testList6 = new CustomList<int>();
-            testList6.Add(10);
-            testList6.Add(15);
-            testList6.Add(20);
-
             CustomList<int> addList = new CustomList<int>();
-            addList = testList5 + testList6;
+            addList = testList3 + testList4;
 
             Console.WriteLine("Add Lists List");
             for (int i = 0; i <= addList.index; i++)
@@ -130,18 +121,9 @@ namespace CustomListUnitTestStarter
 
             }
 
-            CustomList<int> testList7 = new CustomList<int>();
-            testList7.Add(3);
-            testList7.Add(1);
-            testList7.Add(5);
-            CustomList<int> testList8 = new CustomList<int>();
-            testList8.Add(2);
-            testList8.Add(1);
-            testList8.Add(6);
-
 
             CustomList<int> subList = new CustomList<int>();
-            subList = testList7 - testList8;
+            subList = testList - testList2;
             //subList = tempList.SubLists(testList7, testList8);
 
             Console.WriteLine("Sub Lists List");
