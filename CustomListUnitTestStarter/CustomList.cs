@@ -242,7 +242,7 @@ namespace CustomListUnitTestStarter
         public string ConvertToString(CustomList<T> list)
         {
             string temp = "";
-            for (int i = 0; i < list.Counter-2; i++)
+            for (int i = 0; i < list.Counter-1; i++)
             {
                 temp += list[i].ToString();
                 temp += ", ";
